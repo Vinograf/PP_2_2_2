@@ -11,9 +11,14 @@ import web.service.UserServiceImp;
 @Controller
 public class UserController {
 
-    private final UserService userService = new UserServiceImp();
+    private final UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @Autowired()
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping()
     public String printUser(Model model) {
         model.addAttribute("users", userService.printUser());
         return "users";

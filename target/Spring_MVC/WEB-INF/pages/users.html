@@ -17,16 +17,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="useruser : ${users}">
-        <td th:text="${useruser.id}"/>
-        <td th:text="${useruser.age}"/>
-        <td th:text="${useruser.name}"/>
+    <tr th:each="users : ${users}">
+        <td><a th:href="@{'/' + ${users.userId}}" th:utext="${users.userId}">UserId</a></td>
+        <td th:utext="${users.id}"/>
+        <td th:utext="${users.age}"/>
+        <td th:utext="${users.name}"/>
         </td>
         <td>
-            <a th:href="@{/edit/{id}(id=${useruser.id})}"
+            <a th:href="@{/edit/{id}(id=${users.id})}"
                class="btn btn-primary">Update</a>
 
-            <a th:href="@{/delete/{id}(id=${useruser.id})}"
+            <a th:href="@{/delete/{id}(id=${users.id})}"
                class="btn btn-danger">Delete</a>
 
         </td>

@@ -34,7 +34,7 @@
     <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
       <h1 class = "text-center"> Edit User </h1>
       <div class = "card-body">
-        <form th:action="@{/edit/{id} (id=${user.id})}" th:object = "${user}" method="POST">
+        <form th:action="@{/edit/{id} (id=${users.id})}" th:object = "${user}" method="POST">
           <div class ="form-group">
             <label> User age </label>
             <input

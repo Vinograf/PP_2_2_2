@@ -1,6 +1,10 @@
 package web.config;
 
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -25,5 +29,14 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+    @Override
+    public void onStartup(ServletContext ServletContext) throws ServletException {
+        super.onStartup(ServletContext);
+        registerHiddenFieldFilter(ServletContext);
+    }
 
+    private void registerHiddenFieldFilter(ServletContext Context) {
+        Context.addFilter("hiddenHttpMethodFilter",
+                new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null, true, "/*");
+    }
 }

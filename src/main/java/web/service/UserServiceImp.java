@@ -1,10 +1,9 @@
 package web.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.DAO.UserDao;
-import web.DAO.UserDaoImp;
 import web.model.User;
 
 import java.util.List;
@@ -12,7 +11,13 @@ import java.util.List;
 @Transactional
 public class UserServiceImp implements UserService {
 
-    private final UserDao userDao = new UserDaoImp();
+    private final UserDao userDao;
+
+    @Autowired
+    public UserServiceImp(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     @Override
     public List<User> printUser() {
         return userDao.printUser();

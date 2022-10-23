@@ -17,8 +17,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="users : ${user}">
-        <td><a th:href="@{'/' + ${user.id}}" th:utext="${user.id}">UserId</a></td>
+    <tr th:each="user : ${users}">
+<!--        <td><a th:href="@{'/' + ${user.id}}" th:utext="${user.id}">UserId</a></td>-->
         <td th:utext="${user.id}"/>
         <td th:utext="${user.age}"/>
         <td th:utext="${user.name}"/>
